@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(PitHackathonApp());
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class PitHackathonApp extends StatelessWidget {
+  // Das ist das oberste Element Deiner Anwendung
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Hackathon Demo',
       theme: ThemeData(
-        // This is the theme of your application.
+        // Das ist das grundlegende Erscheinungsbild Deiner Anwendung.
         //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
+        // Starte die App mit "flutter run". Die App hat eine Blaue Leiste.
+        // Ändere die Farbe unten in Colors.green lade die Anwendung mit neu
+        // mit "hot reload" (drücke "r" in dem Fenster in dem Du "flutter run",
+        // gestartet hast oder speichere einfach Android Studio (Steuerung+S).
+        // Die Farbe ändert sich ohne dass die Anwendung neu gestartet wurde
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Pit Hackathon Flutter Demo'),
     );
   }
 }
@@ -28,9 +26,8 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
+  // Das ist die Startseite Deiner App. Sie ist stateful. Das heißt sie enthält
+  // Informationen, die ihr Aussehen bestimmen.
 
   // This class is the configuration for the state. It holds the values (in this
   // case the title) provided by the parent (in this case the App widget) and
@@ -48,51 +45,49 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
+      // ein Aufruf von setState teilt Flutter mit, dass sich etwas am State
+      // (Zustand) geändert hat und dass das Widget neu aufgebaut werden muss.
+      // Wenn Du _counter außerhalb von setState() änderst, dann bleibt die
+      // Oberfläche unverändert udn es sieht so aus als wäre nichts geändert.
       _counter++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
+    // Diese Methode wird immer ausgeführt, wenn sich der State (Zustand) ändert,
+    // z.B. durch _incrementCounter oben.
     //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    // Flutter ist darauf optimiert die build() Methode sehr schnell auszuführen,
+    // daher ist es möglich immer alles neu zu bauen, statt die Widgets zu
+    // verändern.
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
+        // Den Wert aus MyHomePage als Titel anzeigen
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+        // Center ist ein Layout Widget. Es enthält genau ein Widget und positioniert
+        // es in der Mitte.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
+          // Column ist auch ein Layout Widget. Es enthält eine  List von Widgets
+          // ("Kinder") und ordnet sie vertikal an. Als Voreinstellung, bekommen die "Kinder"
+          // die Breite der Column. Die Column selbst ist so hoch wie ihr "Elternteil".
           //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
+          // Mit "debug painting" (drücke "p" in der Konsole, wähle
+          // "Toggle Debug Paint" im Flutter Inspector in Android
+          // Studio, oder "Toggle Debug Paint" command in Visual Studio Code)
+          // um die Umrisse der Widgets zu sehen.
           //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
+          // Column besitzt mehrere Properties, um zu steuern welchen Raum es einnimmt
+          // und wie es seine Kinder positioniert. Hier werden die Kinder über
+          // mainAxisAlignment vertikal zentriert; Die vertikale Achse ist die
+          // Hauptachse, den Columns (Spalten) sind vertikal (Die cross axis wäre
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              'Du hast dene Button so oft gedrückt:',
             ),
             Text(
               '$_counter',
@@ -105,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ), // Das Komma am Ende dient einer schöneren Formatierung der Build Methode.
     );
   }
 }
