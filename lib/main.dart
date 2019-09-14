@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_pithackathon/countermodel.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(PitHackathonApp());
+void main() {
+  var counterModel = CounterModel();
+  runApp(ChangeNotifierProvider<CounterModel>(
+      builder: (context) => counterModel, child: PitHackathonApp()));
+}
 
 class PitHackathonApp extends StatelessWidget {
+  const PitHackathonApp({Key key}) : super(key: key);
+
   // Das ist das oberste Element Deiner Anwendung
   @override
   Widget build(BuildContext context) {
@@ -18,13 +26,14 @@ class PitHackathonApp extends StatelessWidget {
         // Die Farbe ändert sich ohne dass die Anwendung neu gestartet wurde
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Pit Hackathon Flutter Demo'),
+      home: MyHackathonPage(
+        title: 'Pit Hackathon Flutter Demo'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class MyHackathonPage extends StatelessWidget {
+  MyHackathonPage({Key key, this.title}) : super(key: key);
 
   // Das ist die Startseite Deiner App. Sie ist stateful. Das heißt sie enthält
   // Informationen, die ihr Aussehen bestimmen.
@@ -37,24 +46,15 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // ein Aufruf von setState teilt Flutter mit, dass sich etwas am State
-      // (Zustand) geändert hat und dass das Widget neu aufgebaut werden muss.
-      // Wenn Du _counter außerhalb von setState() änderst, dann bleibt die
-      // Oberfläche unverändert udn es sieht so aus als wäre nichts geändert.
-      _counter++;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    
+    void _increment() {
+      // innerhalb eines BuildContext können wir uns das Model besorgen,
+      // und es verändern, ohne etwas neu aufzubauen
+      Provider.of<CounterModel>(context, listen: false).incrementCounter();
+    }
+
+
     // Diese Methode wird immer ausgeführt, wenn sich der State (Zustand) ändert,
     // z.B. durch _incrementCounter oben.
     //
@@ -63,8 +63,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // verändern.
     return Scaffold(
       appBar: AppBar(
-        // Den Wert aus MyHomePage als Titel anzeigen
-        title: Text(widget.title),
+        // Den Wert aus MyHackathonPage als Titel anzeigen
+        title: Text(title),
       ),
       body: Center(
         // Center ist ein Layout Widget. Es enthält genau ein Widget und positioniert
@@ -87,20 +87,23 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Du hast dene Button so oft gedrückt:',
+              'Du hast den Button so oft gedrückt:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
+            // Auf Veränderungen im Model reagieren und die Widgets neu aufbauen
+            Consumer<CounterModel>(
+                builder: (context, counterModel, child) => Text(
+                      '${counterModel.counter}',
+                      style: Theme.of(context).textTheme.display1,
+                    )),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        onPressed: _increment,
+        tooltip: 'Hochzählen',
         child: Icon(Icons.add),
       ), // Das Komma am Ende dient einer schöneren Formatierung der Build Methode.
     );
+    
   }
 }
