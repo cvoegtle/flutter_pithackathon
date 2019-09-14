@@ -34,14 +34,10 @@ class HackathonDecrementPage extends StatelessWidget {
                   '${counterModel.counter}',
                   style: Theme.of(context).textTheme.display1,
                 )),
+            RaisedButton.icon(onPressed: _decrement, icon: Icon(Icons.arrow_downward), label: Text("herunter zählen"))
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _decrement,
-        tooltip: 'Herunterzählen',
-        child: Icon(Icons.arrow_downward),
-      ), // 
     );
 
   }
