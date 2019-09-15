@@ -18,13 +18,13 @@ class PitHackathonApp extends StatelessWidget {
     return MaterialApp(
       title: 'Hackathon Demo',
       theme: ThemeData(
-        // Das ist das grundlegende Erscheinungsbild Deiner Anwendung.
+        // Das Theme ist das grundlegende Erscheinungsbild Deiner Anwendung.
         //
         // Starte die App mit "flutter run". Die App hat eine Blaue Leiste.
         // Ändere die Farbe unten in Colors.green lade die Anwendung mit neu
         // mit "hot reload" (drücke "r" in dem Fenster in dem Du "flutter run",
-        // gestartet hast oder speichere einfach Android Studio (Steuerung+S).
-        // Die Farbe ändert sich ohne dass die Anwendung neu gestartet wurde
+        // gestartet hast oder speichere einfach in Android Studio (Steuerung+S).
+        // Die Farbe ändert sich, ohne dass die Anwendung neu gestartet wurde.
         primarySwatch: Colors.blue,
       ),
       home: HackathonStartPage(

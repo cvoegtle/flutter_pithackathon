@@ -16,20 +16,18 @@ class HackathonStartPage extends StatelessWidget {
   // Bei Zustandsänderungen wird die Build Methode aufgerufen und das gesamte
   // Widget neu aufgebaut
 
+  // Flutter ist darauf optimiert die build() Methode sehr schnell auszuführen,
+  // daher ist es möglich alles neu zu bauen, statt die Widgets zu
+  // verändern.
   @override
   Widget build(BuildContext context) {
     void _increment() {
       // innerhalb eines BuildContext können wir uns das Model besorgen,
       // und es verändern, ohne etwas neu aufzubauen
-      Provider.of<CounterModel>(context, listen: false).incrementCounter();
+      var counterModel = Provider.of<CounterModel>(context, listen: false);
+      counterModel.incrementCounter();
     }
 
-    // Diese Methode wird immer ausgeführt, wenn sich der State (Zustand) ändert,
-    // z.B. durch _incrementCounter oben.
-    //
-    // Flutter ist darauf optimiert die build() Methode sehr schnell auszuführen,
-    // daher ist es möglich immer alles neu zu bauen, statt die Widgets zu
-    // verändern.
     return Scaffold(
         appBar: AppBar(
           title: Text(title),

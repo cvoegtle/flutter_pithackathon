@@ -44,8 +44,8 @@ Das sieht z.B. so aus:
                        HackathonDecrementPage(title: "Herunterzählen")))` 
 
 ## Daten speichern
-Am einfachsten kann man Daten als Key-Value-Paare speichern. D.h. man gibt einen Namen (Key) an und speichert darunter 
-seine Daten. Mit dem Key kann man die Daten später wieder abrufen.
+Am einfachsten kann man Daten als Key-Value-Paare speichern. D.h. man gibt einen Namen (Key) an und 
+speichert diesem Namen seine Daten. Mit dem Key kann man die Daten später wieder abrufen.
 
 Das Beispiel dafür findet ihr in countermodel.dart
 
@@ -63,15 +63,13 @@ Das Beispiel dafür findet ihr in countermodel.dart
 immer wenn ihr eine Bibliothek verwendet, müsst ihr sie in der pubspec.yaml eintragen, um sie zum importieren. In 
 unserem Beispiel sind das
 
-`  provider: ^3.1.0
-   shared_preferences: ^0.5.3
-`
+`provider: ^3.1.0`
+
+`shared_preferences: ^0.5.3`
 
 aber Eure Liste wird bestimmt viel länger :-)
 
 ## Los gehts
-
-This project is a starting point for a Flutter application.
 
 Mehr Infos zu Flutter findet Ihr bei [flutter.dev](https://flutter.dev/docs):
 
