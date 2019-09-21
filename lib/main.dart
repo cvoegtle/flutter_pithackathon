@@ -4,6 +4,7 @@ import 'package:flutter_pithackathon/start_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   var counterModel = CounterModel();
   runApp(ChangeNotifierProvider<CounterModel>(
       builder: (context) => counterModel, child: PitHackathonApp()));
