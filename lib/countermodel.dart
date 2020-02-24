@@ -33,15 +33,9 @@ class CounterModel extends ChangeNotifier {
   //
   // Die SharedPreferences sind für einfach Daten gedacht. Ihr könnt aber auch
   // kompliziertere Dinge dort ablegen, wenn Ihr sie in einen JSON String 
-  // umwandelt und beim Laden wieder zurück.
+  // umwandelt und beim Laden wieder zurück wandelt.
   void _setupDataStore() {
     SharedPreferences.getInstance().then((prefs) => _init(prefs));
-  }
-
-  _updateCounter(int newCounter) {
-    this.counter = newCounter;
-    _storeCounter();
-    notifyListeners();
   }
 
   _init(SharedPreferences preferences) {
@@ -51,6 +45,12 @@ class CounterModel extends ChangeNotifier {
     if (storedCounter != null) {
       _updateCounter(storedCounter);
     }
+  }
+
+  _updateCounter(int newCounter) {
+    this.counter = newCounter;
+    _storeCounter();
+    notifyListeners();
   }
 
   void _storeCounter() {
