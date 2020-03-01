@@ -7,7 +7,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   var counterModel = CounterModel();
   runApp(ChangeNotifierProvider<CounterModel>(
-      builder: (context) => counterModel, child: PitHackathonApp()));
+      create: (context) => counterModel, child: PitHackathonApp()));
 }
 
 class PitHackathonApp extends StatelessWidget {
