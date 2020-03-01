@@ -16,12 +16,12 @@ class CounterModel extends ChangeNotifier {
     _setupDataStore();
   }
 
-  incrementCounter() {
-    _updateCounter(this.counter + 1);
+  incrementCounter({int incrementBy = 1}) {
+    _updateCounter(this.counter + incrementBy);
   }
 
-  decrementCounter() {
-    _updateCounter(this.counter - 1);
+  decrementCounter({int decrementBy = 1}) {
+    _updateCounter(this.counter - decrementBy);
   }
 
   // die SharedPreferences sind eine einfache Möglichkeit, um überschaubare

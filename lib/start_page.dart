@@ -27,7 +27,7 @@ class HackathonStartPage extends StatelessWidget {
       var counterModel = Provider.of<CounterModel>(context, listen: false);
       counterModel.incrementCounter();
     }
-
+    
     return Scaffold(
         appBar: AppBar(
           title: Text(title),
@@ -56,9 +56,11 @@ class HackathonStartPage extends StatelessWidget {
               // Auf Veränderungen im Model reagieren und die Widgets neu aufbauen
               Consumer<CounterModel>(
                   builder: (context, counterModel, child) => Column(children: [
-                        Text(
-                          '${counterModel.counter}',
-                          style: Theme.of(context).textTheme.display1,
+                        Center(
+                          child: Text(
+                            '${counterModel.counter}',
+                            style: Theme.of(context).textTheme.headline4,
+                          ),
                         ),
                         Container(
                             padding: EdgeInsets.only(
