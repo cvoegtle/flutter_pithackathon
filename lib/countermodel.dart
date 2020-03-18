@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,12 +18,17 @@ class CounterModel extends ChangeNotifier {
     _setupDataStore();
   }
 
-  incrementCounter({int incrementBy = 1}) {
+  void incrementCounter({int incrementBy = 1}) {
     _updateCounter(this.counter + incrementBy);
   }
 
-  decrementCounter({int decrementBy = 1}) {
-    _updateCounter(this.counter - decrementBy);
+  void decrementCounter({int decrementBy = 1}) {
+    int decrementedCounter = max(this.counter - decrementBy, 0);
+    _updateCounter(decrementedCounter);
+  }
+  
+  bool isMinimum() {
+    return counter == 0;
   }
 
   // die SharedPreferences sind eine einfache Möglichkeit, um überschaubare
